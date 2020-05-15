@@ -14,23 +14,19 @@ app.get("/", (req, res) => {
   res.send("hello");
 });
 
-// mongoose
-//     .connect(
-//         app_config.database.connect_uri,
-//         {
-//             useUnifiedTopology: true,
-//             useNewUrlParser:true
-//         }
+mongoose
+  .connect(app_config.database.connect_uri, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
+  .then(() => {
+    console.log("Database connection successful");
+  })
+  .catch(() => {
+    console.error("Database connection failed");
+  });
 
-//     )
-//     .then(()=>{
-//         console.log('Database connection successful')
-//     })
-//     .catch(()=>{
-//         console.error('Database connection failed')
-//     })
-
-// app.use(require("./routes/api"));
+app.use(require("./routes/api"));
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
