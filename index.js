@@ -4,7 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const gotData = require("./models/got");
 const app_config = require("./configurations/app_config.js");
-
+const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.use(cors());
@@ -32,6 +32,6 @@ app.get("/", (req, res) => {
 
 // app.use(require("./routes/api"));
 
-app.listen(3000, () => {
-  console.log("App listening on port 3000");
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
 });
